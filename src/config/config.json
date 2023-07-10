@@ -1,0 +1,15 @@
+{
+  "usePenetrate": true,
+  "timeout": 10000,
+  "rootDir": "/home/www",
+  "xmlDir": "config",
+  "localTokenName": "token",
+  "tokenName": "penetrate-token",
+  "cacheTime": "60000",
+  "requestRandom": "DMb7vr4RRRpxImkSBWAk",
+  "redis": {
+    "host": "127.0.0.1",
+    "port": 6379,
+    "auth": "%ZwpH&mkzxHrqKLh"
+  }
+}

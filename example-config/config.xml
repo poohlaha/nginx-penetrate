@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    environment: 环境名称, 当前激活的环境名为 module.xml 中 apis 节点上的 environment 属性
+    properties: 多个域名配置, module.xml 中通过 address 查找它
+    property:
+            - timeout: 超时时间, 默认为 10000(10s)
+            - host: 域名
+            - protocol: 协议, https 或 http
+            - localTokenName: 本地 token 名称, 默认为 config.json 中的 localTokenName
+            - tokenName: 请求 token 名称, 默认为 config.json 中的 tokenName
+-->
+<configs>
+    <config environment="prod">
+        <properties name="chat">
+            <property name="timeout" value="10000"/>
+            <property name="host" value="example.com" deploy="_apigateway_" />
+            <property name="protocol" value="https" deploy="_https_" />
+            <property name="localTokenName" value="chat-token"/>
+            <property name="tokenName" value="chat_api_token"/>
+        </properties>
+
+        <properties name="remark">
+            <property name="timeout" value="10000"/>
+            <property name="host" value="example.com" deploy="_apigateway_"/>
+            <property name="protocol" value="https" deploy="_https_"/>
+            <property name="localTokenName" value="remark-token"/>
+            <property name="tokenName" value="remark_api_token"/>
+        </properties>
+    </config>
+
+    <config environment="test">
+        <properties name="chat">
+            <property name="timeout" value="10000"/>
+            <property name="host" value="example.test.com" deploy="_apigateway_" />
+            <property name="protocol" value="https" deploy="_https_" />
+            <property name="localTokenName" value="chat-token"/>
+            <property name="tokenName" value="chat_api_token"/>
+        </properties>
+
+        <properties name="remark">
+            <property name="timeout" value="10000"/>
+            <property name="host" value="example.test.com" deploy="_apigateway_"/>
+            <property name="protocol" value="https" deploy="_https_"/>
+            <property name="localTokenName" value="remark-token"/>
+            <property name="tokenName" value="remark_api_token"/>
+        </properties>
+    </config>
+</configs>

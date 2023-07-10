@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  environment: 环境名称, 对应 config.xml 中的 environment
+  api:
+      - uri: 请求地址
+      - type: 0: 一般请求, 1 登录, 2: 登出, 默认为 0
+      - address: 对应 config.xml 中的 properties 上的 name 属性
+      - auth: 0: 鉴权, 1: 跳过鉴权, 默认为 0
+      - destination:
+        - header: header 的组成, $1 替换为 token
+        - method: 真实请求方法
+        - uri: 真实请求 uri, 通过获取 config.xml 中的 host 来拼接成完整的 url
+-->
+<apis environment="prod">
+
+    <!-- 登录 -->
+    <api>
+        <uri>/v1/login</uri>
+        <type>1</type>
+        <address>remark</address>
+        <destination>
+            <method>POST</method>
+            <uri>/remarkApi/login</uri>
+        </destination>
+    </api>
+
+    <!-- 查询 -->
+    <api>
+        <uri>/v1/query</uri>
+        <type>0</type>
+        <address>remark</address>
+        <destination>
+            <!-- $1 需要替换为 token -->
+            <header>xxx:token:$1</header>
+            <method>POST</method>
+            <uri>/remarkApi/query</uri>
+        </destination>
+    </api>
+
+    <!-- 查询 -->
+    <api>
+        <uri>/v1/queryList</uri>
+        <type>1</type>
+        <address>chat</address>
+        <destination>
+            <method>POST</method>
+            <uri>/chatApi/queryList</uri>
+        </destination>
+    </api>
+
+    <!-- 登出 -->
+    <api>
+        <uri>/v1/logout</uri>
+        <type>2</type>
+        <address>remark</address>
+        <destination>
+            <method>POST</method>
+            <uri>/remarkApi/logout</uri>
+        </destination>
+    </api>
+
+    <!-- 查询 -->
+    <api>
+        <uri>/v1/queryImage</uri>
+        <auth>1</auth>
+        <address>chat</address>
+        <destination>
+            <method>GET</method>
+            <uri>/chatApi/queryImage</uri>
+        </destination>
+    </api>
+
+</apis>
